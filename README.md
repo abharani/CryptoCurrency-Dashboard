@@ -1,3 +1,1 @@
-# Crypto-Dashboard
-# CryptoDashboard
 # CryptoDashboard
