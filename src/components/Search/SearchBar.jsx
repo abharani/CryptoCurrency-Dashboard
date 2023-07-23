@@ -3,8 +3,8 @@ import SearchSuggestions from './SearchSuggestions';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedCoinsList } from '../../store/global';
 import { useEffect } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
-// A component for the search bar with search suggestions
 const SearchBar = () => {
    const [searchValue, setSearchValue] = useState('');
    const [showSuggestions, setShowSuggestions] = useState(false);
@@ -26,7 +26,7 @@ const SearchBar = () => {
 
       // Check if the input contains a number or special character
       if (/[\d~`!@#$%^&*()_+=\-[\]\\';,/{}|\\":<>?]/.test(inputValue)) {
-         alert('Please do not enter numbers or special characters.');
+         toast.error('Special characters and Numbers are not allowed');
          return;
       }
 
@@ -37,7 +37,6 @@ const SearchBar = () => {
       setShowSuggestions(newSuggestions.length > 0);
    };
 
-   // Perform search for suggestions
    const performSearch = (inputValue) => {
       return coins.filter(({ id, name }) =>
          name.toLowerCase().includes(inputValue.toLowerCase())
@@ -64,13 +63,12 @@ const SearchBar = () => {
    };
 
    // Update the list of coins when market data changes
-   useEffect(() => {
+    useEffect(() => {
       setCoins(market.map((coin) => ({
          id: coin.id,
          name: coin.name,
       })))
    }, [market])
-
    return (
       <div className="shadow-md rounded-lg relative w-full">
          {/* Search input */}
@@ -86,6 +84,8 @@ const SearchBar = () => {
          {showSuggestions && (
             <SearchSuggestions suggestions={suggestions} setSearchValue={setSearchValue} setShowSuggestions={setShowSuggestions} />
          )}
+         {/* The toast container */}
+         <Toaster />
       </div>
    );
 };
