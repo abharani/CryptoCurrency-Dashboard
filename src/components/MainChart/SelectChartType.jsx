@@ -85,7 +85,9 @@ const SelectChartType = ({ updateChartToRender }) => {
                            onChange={() => handleChartSelection(chart.type)}
                            checked={chart.checked}
                            id={chart.type}
-                           type="checkbox" />
+                           type="checkbox" 
+                              onClick={toggleDropdown}
+                           />
                         <label className="w-full cursor-pointer pl-2 p-1" htmlFor={chart.type}>{chart.type}</label>
                      </div>
                   ))}

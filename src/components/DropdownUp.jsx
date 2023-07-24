@@ -13,9 +13,9 @@ const DropdownUp = ({ coins, handleSelect, type, location }) => {
    };
 
    // Function to handle the selection of a coin from the dropdown
-   const handleCoinSelection = (coinId, name) => {
+   const handleCoinSelection = (coinId, name, value) => {
       setSelectedCoin(name);
-      handleSelect(coinId);
+      handleSelect({ coinId, value });
       setDisplayeDropdown(false);
    };
 
@@ -25,7 +25,7 @@ const DropdownUp = ({ coins, handleSelect, type, location }) => {
             {/* Button to open/close the dropdown */}
             <button
                type="button"
-               className="inline-flex justify-between items-center w-28 xl:w-36 px-4 py-2.5 text-sm font-medium text-gray-700 bg-white ring-2 ring-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+               className="inline-flex justify-between items-center w-28 xl:w-36 px-4 py-2.5 text-sm font-medium text-gray-700 bg-white ring-2 ring-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 truncate"
                onClick={toggleDropdown}
             >
                {/* Display the selected coin or a default message */}
@@ -50,7 +50,7 @@ const DropdownUp = ({ coins, handleSelect, type, location }) => {
                   {/* Render each coin in the dropdown */}
                   {coins.map((coin) => (
                      <div
-                        key={coin.id}
+                        key={coin.key}
                         className={`w-full py-1.5 text-center truncate border-b border-gray-300 
                         hover:bg-rose-200 cursor-pointer
                         ${coin.checked ? 'bg-rose-400' : 'bg-white'}
@@ -58,13 +58,12 @@ const DropdownUp = ({ coins, handleSelect, type, location }) => {
                      >
                         {/* Checkbox for selecting the coin */}
                         <input
-                           className="appearance-none h-full "
-                           onChange={() => handleCoinSelection(type === 'sell' ? coin.id : coin.vs_currency, coin.name)}
-                           checked={coins.checked}
-                           id={coin.id}
+                           className="appearance-none h-full"
+                           onChange={() => handleCoinSelection(coin.key, coin.value.name, coin.value.value)}
+                           id={coin.key}
                            type="checkbox" />
                         {/* Label for the coin */}
-                        <label className="w-full cursor-pointer pl-2 p-1" htmlFor={coin.id}>{coin.name}</label>
+                        <label className="w-full cursor-pointer pl-2 p-1" htmlFor={coin.key}>{coin.value.name}</label>
                      </div>
                   ))}
                </div>

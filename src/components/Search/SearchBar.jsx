@@ -23,12 +23,13 @@ const SearchBar = () => {
    const handleInputChange = (event) => {
       const inputValue = event.target.value;
       setSearchValue(inputValue);
-
       // Check if the input contains a number or special character
       if (/[\d~`!@#$%^&*()_+=\-[\]\\';,/{}|\\":<>?]/.test(inputValue)) {
          toast.error('Special characters and Numbers are not allowed');
          return;
       }
+
+
 
       // Perform search for suggestions
       const newSuggestions = inputValue ? performSearch(inputValue) : [];
@@ -46,21 +47,23 @@ const SearchBar = () => {
    // Handle key press event
    const handleKeyPress = (event) => {
       if (event.key === 'Enter') {
-         // Set the selected coin
-         setSelectedCoin({
+         const obj = {
             id: searchValue.toLowerCase(),
             name: searchValue.charAt(0).toUpperCase() + searchValue.slice(1),
-         });
+         }
+         const foundObject = coins.find(coin => coin.id === obj.id);
+         if (foundObject) {
+            setSelectedCoin(foundObject);
 
-         // Dispatch the action to set the selected coins in the store
-         dispatch(setSelectedCoinsList([{
-            id: searchValue.toLowerCase(),
-            name: searchValue.charAt(0).toUpperCase() + searchValue.slice(1),
-         }]));
+            // Dispatch the action to set the selected coins in the store
+            dispatch(setSelectedCoinsList([foundObject]));
 
-         setShowSuggestions(false);
-      }
-   };
+            setShowSuggestions(false);
+         } else {
+            toast.error('Crypto Not found');
+            return;
+         }}}
+   
 
    // Update the list of coins when market data changes
     useEffect(() => {

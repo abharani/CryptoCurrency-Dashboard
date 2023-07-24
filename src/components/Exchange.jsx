@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { currencyFormat } from "../utils/utils";
@@ -6,123 +7,48 @@ import DropdownUp from "./DropdownUp";
 
 
 const Exchange = () => {
-     // State for input value, sell and buy currencies, exchange data, and result
+   // State for input value, sell and buy currencies, exchange data, and result
    const [inputValue, setInputValue] = useState();
-   const [sell, setSell] = useState('bitcoin');
-   const [buy, setBuy] = useState('btc');
-   const [exchange, setExchange] = useState('');
+   const [sell, setSell] = useState({ coinId: 'btc', value: 1 });
+   const [buy, setBuy] = useState({ coinId: 'btc', value: 1 });
    const [result, setResult] = useState();
+   const [coins, setCoins] = useState()
 
    // Fetch exchange data using the "useGetExchangeQuery" hook
-   const { data: response, isSuccess, isError, error } = useGetExchangeQuery(`/simple/price?ids=${sell}&vs_currencies=${buy}`)
+   const { data: response, isSuccess, refetch } = useGetExchangeQuery(`/exchange_rates`);
 
-    // Access the market data from the redux store
-  const { market } = useSelector(state => state.cryptoMarket);
-     // Define the available vs_currencies for selection
-   const vs_currencies = [
-      "btc",
-      "eth",
-      "ltc",
-      "bch",
-      "bnb",
-      "eos",
-      "xrp",
-      "xlm",
-      "link",
-      "dot",
-      "yfi",
-      "usd",
-      "aed",
-      "ars",
-      "aud",
-      "bdt",
-      "bhd",
-      "bmd",
-      "brl",
-      "cad",
-      "chf",
-      "clp",
-      "cny",
-      "czk",
-      "dkk",
-      "eur",
-      "gbp",
-      "hkd",
-      "huf",
-      "idr",
-      "ils",
-      "inr",
-      "jpy",
-      "krw",
-      "kwd",
-      "lkr",
-      "mmk",
-      "mxn",
-      "myr",
-      "ngn",
-      "nok",
-      "nzd",
-      "php",
-      "pkr",
-      "pln",
-      "rub",
-      "sar",
-      "sek",
-      "sgd",
-      "thb",
-      "try",
-      "twd",
-      "uah",
-      "vef",
-      "vnd",
-      "zar",
-      "xdr",
-      "xag",
-      "xau",
-      "bits",
-      "sats"
-   ]
-
-    // Create an array of objects containing coin details and vs_currency values
-  const coins = market.map((coin, idx) => ({
-      id: coin.id,
-      name: coin.name,
-      vs_currency: vs_currencies[idx],
-   }))
-
-    // Event handler for selecting the "sell" currency
+   // Event handler for selecting the "sell" currency
    const handleSellCurrency = (value) => {
-      console.log('Sell event', value);
       setSell(value);
-      console.log(sell);
-      // setExchange('')
    }
 
-     // Event handler for selecting the "buy" currency
+   // Event handler for selecting the "buy" currency
    const handleBuyCurrency = (value) => {
-      console.log('Sell event', value);
       setBuy(value);
-      console.log(buy);
-      // setExchange('');
    }
 
-    // Event handler for changing the input value
+   // Event handler for changing the input value
    const handleExchangeValueChange = (e) => {
       setInputValue(e.target.value);
    }
 
-   
    // Event handler for the exchange button click
    const handleExchangeButton = () => {
-        // Calculate the exchanged value and format it into currency format
-      const value = currencyFormat(exchange && inputValue * exchange[sell][buy].toFixed(0));
+      // Calculate the exchanged value and format it into currency format
+      const toBitcoin = 1 / sell.value * inputValue;
+      const value = toBitcoin * buy.value;
       setResult(value);
+      refetch();
    }
 
-     // Update the exchange data when there is a successful response
+   // Update the exchange data when there is a successful response
    useEffect(() => {
       if (isSuccess && response) {
-         setExchange(response)
+         const keyValuePairs = [];
+         Object.entries(response.rates).forEach(([key, value]) => {
+            keyValuePairs.push({ key, value });
+         });
+         setCoins(keyValuePairs);
       }
    }, [isSuccess, response]);
 
@@ -150,10 +76,10 @@ const Exchange = () => {
          <div className="flex items-center gap-5">
             <p className="text-base xl:text-lg mr-0.5 text-green-600 font-semibold">BUY</p>
             <DropdownUp coins={coins} handleSelect={handleBuyCurrency} type="buy" />
-         </div> 
+         </div>
          {/* Display the result of the exchange */}
          <p className="text-[#4c9d8a] text-lg font-semibold px-4 w-full">
-            {result + `${buy}`}
+            {result && result + ` ${buy.coinId}`}
          </p>
       </div>
       {/* Button to initiate the exchange */}
@@ -163,7 +89,7 @@ const Exchange = () => {
       >
          Exchange
       </button>
-   </div>   )
+   </div>)
 }
 
 export default Exchange
