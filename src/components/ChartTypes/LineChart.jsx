@@ -30,9 +30,11 @@ const options = {
             color: "black",
             usePointStyle: false,
             paddingLeft: 36,
-           pointStyleWidth: 18,
+            pointStyleWidth: 18,
          }
-      }}}
+      }
+   }
+}
 
 
 const LineChart = ({ res }) => {

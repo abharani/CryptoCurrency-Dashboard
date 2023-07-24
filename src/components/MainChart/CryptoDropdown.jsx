@@ -1,7 +1,8 @@
- import { useState } from "react";
- import { useDispatch, useSelector } from "react-redux";
- import { setSelectedCoinsList } from "../../store/global";
- import { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedCoinsList } from "../../store/global";
+import { useEffect } from "react";
+import { BsFillCaretDownFill } from "react-icons/bs";
 
 const CryptoDropdown = () => {
    // State variables
@@ -54,16 +55,8 @@ const CryptoDropdown = () => {
             >
                {selectedCoins.name || "Cryptocurrency"}
                {/* Dropdown icon */}
-               <svg
-                  className={`ml-2.5 h-5 w-5 transition-transform ${displayDropdown ? "transform rotate-180" : ""
-                     }`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-               >
-                  <path fillRule="evenodd" d="M10 14l6-6H4z" />
-               </svg>
+               <BsFillCaretDownFill className={`h-3 w-3 transition-transform ${displayDropdown ? "transform rotate-180" : ""
+                  }`} />
             </button>
          </div>
 

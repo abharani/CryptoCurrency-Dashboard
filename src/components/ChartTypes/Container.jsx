@@ -1,13 +1,16 @@
+
 import { useSelector } from "react-redux";
 import { formateData } from "../../utils/chartData";
 import { useEffect, useState } from "react";
-import BarChart from './BarChart';
+import VerticalBar from './VerticalBar';
 import LineChart from './LineChart';
-import StatusCode from "../../utils/StatusCode";
+import HorizontalBar from "./HorizontalBar";
+
 // Chart components mapping
 const chartToRender = {
-   BarChart: BarChart,
+   VerticalBar: VerticalBar,
    LineChart: LineChart,
+   HorizontalBar: HorizontalBar
 };
 
 const Container = ({ interval, type }) => {

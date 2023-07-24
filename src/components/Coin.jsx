@@ -14,7 +14,7 @@ const Coin = ({ coin, currency }) => {
                   {/* Market Cap */}
                   <p>Mkt.Cap {new Intl.NumberFormat('en-IN', {
                      style: 'currency',
-                     currency: "usd",
+                     currency: currency,
                   }).format(coin.market_cap / 1000000)}</p>
                </div>
             </div>

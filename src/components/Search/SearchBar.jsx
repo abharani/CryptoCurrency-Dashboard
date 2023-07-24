@@ -62,11 +62,13 @@ const SearchBar = () => {
          } else {
             toast.error('Crypto Not found');
             return;
-         }}}
-   
+         }
+      }
+   }
+
 
    // Update the list of coins when market data changes
-    useEffect(() => {
+   useEffect(() => {
       setCoins(market.map((coin) => ({
          id: coin.id,
          name: coin.name,

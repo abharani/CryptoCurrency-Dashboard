@@ -1,10 +1,10 @@
 // import { useState } from "react";
 
 const Duration = ({ updateDaysAndInterval }) => {
-     // const [duration, setDuration] = useState({})
+   // const [duration, setDuration] = useState({})
 
-    // Handle click event to update days and interval
-    const handleClick = (days, interval) => {
+   // Handle click event to update days and interval
+   const handleClick = (days, interval) => {
       updateDaysAndInterval(days, interval);
    }
    return (
@@ -30,7 +30,7 @@ const Duration = ({ updateDaysAndInterval }) => {
             onClick={() => handleClick(30, 'daily')}
             className="text-xs md:text-base rounded-lg text-black bg-gray-100 px-4 py-2 focus:font-medium focus:bg-blue-100 focus:ring-2 focus:ring-blue-600">
             1M
-         </button> 
+         </button>
          {/* Button for 6 month duration */}
          <button
             value={180}

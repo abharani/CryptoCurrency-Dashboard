@@ -1,7 +1,5 @@
 
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { currencyFormat } from "../utils/utils";
 import { useGetExchangeQuery } from "../store/api";
 import DropdownUp from "./DropdownUp";
 

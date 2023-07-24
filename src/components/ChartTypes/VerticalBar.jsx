@@ -18,7 +18,7 @@ ChartJS.register(
    Legend
 );
 
-const BarChart = ({ res }) => {
+const VerticalBar = ({ res }) => {
    return (
       <>
          {/* Render the bar chart with the data */}
@@ -27,4 +27,4 @@ const BarChart = ({ res }) => {
    )
 }
 
-export default BarChart
+export default VerticalBar
