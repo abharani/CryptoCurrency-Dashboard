@@ -1,25 +1,36 @@
-import { useSelector } from "react-redux"
-import StatusCode from "../utils/StatusCode";
-import Coin from "./Coin";
+import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCryptos } from '../store/marketSlice';
+import { useEffect } from 'react';
+import Coin from './Coin';
 
-const CurrencyTable = () => {
-   const { market, status } = useSelector(state => state.cryptoMarket);
+const Sidebar = () => {
+   const dispatch = useDispatch();
+   const { currency } = useSelector(state => state.global);
+   const { market: coins } = useSelector(state => state.cryptoMarket);
+   const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en`;
 
-   if (status === StatusCode.LOADING) {
-      return <div>Loading...</div>
-   }
+   useEffect(() => {
+      // Dispatch the `getCryptos` action on component mount and whenever the `url` changes
+      dispatch(getCryptos(url));
+   }, [dispatch, url]);
 
-   if (status === StatusCode.ERROR) {
-      return <div>Error</div>
-   }
+   const percentageFormat = (num) => {
+      return `${new Number(num).toFixed(2)}%`; // Format the given number as a percentage with two decimal places
+   };
+
+   const currencyFormat = (num) => {
+      return ` $` + num; // Format the given number as a currency amount
+   };
 
    return (
-      <section className="shadow-md pl-4 h-760px rounded-md bg-white lg:h-[770px] xl:h-[783px] 2xl:h-[879px] overflow-y-scroll">
-         <h3 className=" text-xl font-bold ">Cryptocurrency by market cap</h3>
-         <br />
-         {market.map((coin) => <Coin key={coin.id} coin={coin} />)}
-      </section>
-   )
-}
+      <>
+         {/* Iterate over each coin and render the Coin component */}
+         {coins.map((coin, idx) => (
+            <Coin key={idx} coin={coin} currency={currency} />
+         ))}
+      </>
+   );
+};
 
-export default CurrencyTable
+export default Sidebar;

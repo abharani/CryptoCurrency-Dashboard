@@ -1,33 +1,32 @@
-// import { currencyFormat, percentageFormat } from "../utils";
-// import {MdOutlineArrowDropUp,MdOutlineArrowDropDown} from 'react-icons/md'
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
+import { currencyFormat, percentageFormat } from "../utils/utils";
 
-export function currencyFormat(num) {
-   return `  $` + num
-}
-export function percentageFormat(num) {
-   return `${new Number(num).toFixed(2)}%`
-}
-
-const Coin = ({ coin }) => {
+// A component for displaying information about a coin
+const Coin = ({ coin, currency }) => {
    return (
-      <div className=" bg-white ">
-         <div className="grid grid-cols-2 border-gray-200 border-b">
-            <div className="flex items-center gap-2 ">
-               <img className="w-5" src={coin.image} alt={coin.name} />
-               <div className="flex-col text-lg">
-                  <p>{coin.name}</p>
-                  <div className="text-slate-400 text-xs mb-3">
-                     <p>Mkt.Cap {currencyFormat(coin.market_cap)}</p>
-                  </div>
+      <div className="flex justify-between items-center border-gray-200 border-b py-2.5">
+         <div className="flex items-center gap-4">
+            {/* Coin image */}
+            <img className="w-7" src={coin.image} alt={coin.name} />
+            <div className="flex-col text-base xl:text-lg font-semibold">
+               <p>{coin.name}</p>
+               <div className="text-slate-400 text-xs">
+                  {/* Market Cap */}
+                  <p>Mkt.Cap {new Intl.NumberFormat('en-IN', {
+                     style: 'currency',
+                     currency: currency,
+                  }).format(coin.market_cap / 1000000)}</p>
                </div>
             </div>
-            <span className={`flex pl-12 pr-4 items-center gap-2 ${coin.price_change_percentage_24h < 0
-               ? "text-orange-500" : "text-green-600"}`}>
-               {coin.price_change_percentage_24h < 0 ? (<BiDownArrow />) : (<BiUpArrow />)}
-               {percentageFormat(coin.price_change_percentage_24h)}
-            </span>
          </div>
+         {/* Display the price change percentage */}
+         <span className={`flex pl-12 pr-4 items-center gap-2 ${coin.price_change_percentage_24h < 0
+            ? "text-orange-500" : "text-green-600"}`}>
+            {/* Display an arrow icon based on the price change */}
+            {coin.price_change_percentage_24h < 0 ? (<BiDownArrow />) : (<BiUpArrow />)}
+            {/* Format and display the percentage */}
+            {percentageFormat(coin.price_change_percentage_24h)}
+         </span>
       </div>
    );
 };

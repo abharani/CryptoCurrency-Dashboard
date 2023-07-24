@@ -1,3 +1,6 @@
+// This is an array named "colors" that contains objects representing different color styles.
+// Each object has "backgroundColor" and "borderColor" properties, defining the colors for the corresponding element.
+
 const colors = [
    {
       backgroundColor: 'red',
@@ -40,6 +43,8 @@ const colors = [
       borderColor: '#4B0082', // Darker shade of indigo
    },
 ];
+// This is a function named "unixToData" that converts a Unix time stamp to a formatted date string.
+// It takes a Unix time stamp and an interval as input and returns a formatted date string.
 
 const unixToData = (unixTime, interval) => {
    const date = new Date(unixTime);
@@ -49,6 +54,9 @@ const unixToData = (unixTime, interval) => {
    return formattedTime;
 }
 
+
+// This is a function named "createDataSet" that creates a data set object for a chart.
+// It takes an item, an index, and a coin object as input and returns a data set object.
 const createDataSet = (item, idx, coin) => {
    const label = coin.name;
    const prices = item.map((item) => item[1]);
@@ -63,6 +71,11 @@ const createDataSet = (item, idx, coin) => {
    }
 }
 
+
+// This is an export statement for the "formateData" function.
+// The "formateData" function takes a response, an array of coins, and an interval as input.
+//It formats the response data to a format suitable for displaying in a chart.
+
 export const formateData = (response, coins, interval) => {
    const dates = response[0].map((item) => unixToData(item[0], interval));
 
@@ -74,4 +87,42 @@ export const formateData = (response, coins, interval) => {
    }
 
    return data;
+}
+
+// This is an export statement for the "pieChartData" function.
+// The "pieChartData" function takes raw data as input and generates formatted data for displaying a pie chart.
+
+export const pieChartData = async (rawData) => {
+
+   const label = [];
+   const dataSets = [];
+
+   for (const element of rawData) {
+      dataSets.push(Number(element.market_cap.toFixed(0)));
+      label.push(element.name);
+   }
+
+   const formatedData = {
+      labels: label,
+      datasets: [
+         {
+            label: [],
+            data: dataSets,
+            backgroundColor: ["#5ac8ae", "#eae31f", "#50a3f0", "#f98e8e"],
+            borderColor: ["white"],
+            borderWidth: 0,
+            hoverOffset: 10,
+            hoverBorderwidth: 4,
+         },
+      ],
+   };
+   
+   const totalValue = (
+      dataSets.reduce((accumulator, currentValue) => accumulator + currentValue, 0).toFixed(0)
+   );
+
+   return {
+      formatedData,
+      totalValue,
+   }
 }

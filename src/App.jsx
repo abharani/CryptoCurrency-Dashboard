@@ -1,35 +1,46 @@
-import CurrencySelector from "./components/CurrencySelector"
-import Searchbar from "./components/searchContainer/Searchbar"
-import ChartContainer from "./components/chartContainer/ChartContainer"
-import PieChart from "./components/PieChart"
-import Sidebar from "./components/Sidebar"
+import PieChart from "./components/ChartTypes/PieChart"
+import GlobalCurrency from "./components/GlobalCurrency"
 import Header from "./components/Header"
-import Exchange from "./components/exchange/Exchange"
+import SearchBar from "./components/Search/SearchBar"
+import Sidebar from "./components/Sidebar"
+import MainChart from "./components/MainChart/MainChart"
+import Exchange from "./components/Exchange"
 
 function App() {
-
    return (
-      <div className="w-full ">
-         <div className="w-full">
+      <div className='flex flex-col gap-5 w-full h-screen'>
+         <div className="w-full shadow-lg h-[6vh] px-3">
             <Header />
          </div>
-         {/* bg-[#fafbff] */}
-         <div className="bg-[#fafbff] w-[90%] sm:mx-auto rounded-md  mt-6  px-10 py-6">
-            <div className="lg:flex  lg:gap-10  w-full">
-               <div className=" lg:w-2/3 xl:w-4/6 xl:pl-14">
-                  <div className="flex pt-4 sm:gap-2">
-                     <CurrencySelector />
-                     <Searchbar />
+         <div className="lg:h-[830px] xl:h-[930px] bg-[#f3f8ff] flex flex-col lg:flex-row justify-between gap-5 w-[96%] max-w-[1440px] mx-auto p-5 rounded-lg">
+            <div className="w-full lg:w-[72%] flex-1 flex flex-col space-y-4 h-full">
+               <div className="flex gap-5">
+                  {/* The global currency component */}
+                  <GlobalCurrency />
+                  {/* The search bar component */}
+                  <SearchBar />
+               </div>
+               <div className="bg-white border border-gray-300 rounded-lg w-full px-5 py-4 grow shadow-md">
+                  {/* The main chart component */}
+                  <MainChart />
+               </div>
+               <div className="flex flex-col md:flex-row gap-4">
+                  <div className="bg-white border border-gray-300 rounded-lg w-full">
+                     {/* The pie chart component */}
+                      <PieChart />
                   </div>
-                  <div className=" bg-white shadow-md mt-4 rounded-md">
-                     <ChartContainer />
-                  </div>
-                  <div className="mt-4 flex flex-col  md:flex-row md:gap-5 xl:gap-2">
-                     <PieChart />
+                  <div className="bg-white border border-gray-300 rounded-lg w-full">
+                     {/* The exchange component */}
                      <Exchange />
                   </div>
                </div>
-               <div className="mt-4 mb-4 lg:items-center xl:pr-14 xl:content-center  xl:w-2/6">
+            </div>
+            <div className="h-full relative bg-white px-5 border border-gray-300 rounded-lg w-full lg:w-[28%] space-y-6 overflow-y-clip shadow-md">
+               <div className="border-b border-gray-300">
+                  <h1 className="text-2xl md:text-3xl text-center py-2 lg:text-xl font-semibold">Cryptocurrency by market Cap</h1>
+               </div>
+               <div className="md:h-[500px] w-full lg:h-full overflow-y-scroll scrollbar-hide">
+                  {/* The sidebar component */}
                   <Sidebar />
                </div>
             </div>

@@ -1,10 +1,12 @@
 
 const Header = () => {
    return (
-      <div className='bg-white pl-20 p-2 pb-4 shadow-lg'>
-         <img className='h-10' src='https://th.bing.com/th/id/OIP.d25tqPolpix7RHdnW3dcPgHaBk?w=320&h=74&c=7&r=0&o=5&dpr=1.2&pid=1.7' alt='logo' />
+      <div className='max-w-[1440px] mx-auto py-4'>
+         {/* Render the logo image */}
+         <img className='h-7' src='https://www.almabetter.com/_next/image?url=https%3A%2F%2Falmablog-media.s3.ap-south-1.amazonaws.com%2FAlma_Better_Logo_4d9d929fe6.png&w=256&q=75' alt='logo' />
       </div>
    )
 }
+
 
 export default Header
