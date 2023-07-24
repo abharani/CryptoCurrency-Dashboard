@@ -10,6 +10,8 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
+// Register necessary plugins for ChartJS 
+
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -37,6 +39,8 @@ export const options = {
 const HorizontalBar = ({ res }) => {
     return (
         <>
+
+            {/* Render the Bar chart with the data once it is loaded */}
             {res && <Bar data={res} options={options} />}
         </>
     )
