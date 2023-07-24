@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import { configureStore } from "@reduxjs/toolkit";
-import marketSlice from "./marketSlice";
-import coinSlice from "./coinSlice";
-import coinHistorySlice from "./coinHistorySlice";
-
-const store = configureStore({
-   reducer: {
-      cryptoMarket: marketSlice,
-      coins: coinSlice,
-      history: coinHistorySlice,
-   },
-})
-
-export default store;
-=======
 import { configureStore } from "@reduxjs/toolkit";
 import globalSlice from "./global";
 import marketSlice from "./marketSlice";
@@ -39,4 +23,3 @@ setupListeners(store.dispatch);
 
 // Export the configured store as the default export of this module
 export default store;
->>>>>>> master
