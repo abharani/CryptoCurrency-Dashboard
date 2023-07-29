@@ -56,4 +56,4 @@ https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=us
 
 ## Screenshots
 
-[App Screenshot](https://drive.google.com/uc?export=download&id=1AuAfq57UabSChS-841zdDtZ2qt0Wcfkc)
+![App Screenshot](https://github.com/abharani/CryptoCurrency-Dashboard/blob/c0c280697d0cee54cb001155cd4f6950fcb8ae30/cryptoDashboard.png)
