@@ -12,6 +12,7 @@ Install Cryptocurrency Dashboard with npm
 
 bash
 npm install
+
 npm run dev
 
 ## Features
