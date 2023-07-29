@@ -1,4 +1,3 @@
-
 import { useSelector } from "react-redux";
 import { formateData } from "../../utils/chartData";
 import { useEffect, useState } from "react";

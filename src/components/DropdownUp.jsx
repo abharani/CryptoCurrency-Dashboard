@@ -4,6 +4,7 @@ import { useState } from "react";
 const DropdownUp = ({ coins, handleSelect, type, location }) => {
    // State for controlling the display of the dropdown
    const [displayeDropdown, setDisplayeDropdown] = useState(false);
+
    // State for storing the selected coin
    const [selectedCoin, setSelectedCoin] = useState('Bitcoin');
 

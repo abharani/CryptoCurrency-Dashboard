@@ -8,6 +8,7 @@ import {
    Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+
 // Register necessary plugins for ChartJS 
 ChartJS.register(
    CategoryScale,
@@ -22,7 +23,7 @@ const VerticalBar = ({ res }) => {
    return (
       <>
          {/* Render the bar chart with the data */}
-          {res && <Bar data={res} />}
+         {res && <Bar data={res} />}
       </>
    )
 }

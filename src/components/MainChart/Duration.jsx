@@ -1,7 +1,5 @@
-// import { useState } from "react";
 
 const Duration = ({ updateDaysAndInterval }) => {
-   // const [duration, setDuration] = useState({})
 
    // Handle click event to update days and interval
    const handleClick = (days, interval) => {

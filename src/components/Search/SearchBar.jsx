@@ -13,8 +13,8 @@ const SearchBar = () => {
 
    const dispatch = useDispatch();
 
-   // Get the market data from the store
-   const { market } = useSelector(state => state.cryptoMarket);
+   // Get the all Coins from the store
+   const { allCoinsList } = useSelector(state => state.global);
 
    // Store the list of coins
    const [coins, setCoins] = useState();
@@ -28,8 +28,6 @@ const SearchBar = () => {
          toast.error('Special characters and Numbers are not allowed');
          return;
       }
-
-
 
       // Perform search for suggestions
       const newSuggestions = inputValue ? performSearch(inputValue) : [];
@@ -66,14 +64,14 @@ const SearchBar = () => {
       }
    }
 
-
    // Update the list of coins when market data changes
    useEffect(() => {
-      setCoins(market.map((coin) => ({
+      setCoins(allCoinsList.map((coin) => ({
          id: coin.id,
          name: coin.name,
       })))
-   }, [market])
+   }, [allCoinsList])
+
    return (
       <div className="shadow-md rounded-lg relative w-full">
          {/* Search input */}

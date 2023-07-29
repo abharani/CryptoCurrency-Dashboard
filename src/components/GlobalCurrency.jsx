@@ -4,7 +4,6 @@ import { setGlobalCurrency } from "../store/global";
 import { BsFillCaretDownFill } from 'react-icons/bs';
 
 const GlobalCurrency = () => {
-   const [currency, setCurrency] = useState('usd');
    const dispatch = useDispatch();
    const coins = ['usd', 'eur', 'inr'];
 
@@ -14,10 +13,6 @@ const GlobalCurrency = () => {
    const toggleDropdown = () => {
       setDisplayeDropdown(!displayeDropdown);
    };
-
-   // const handleDropdown = (event) => {
-   //    setCurrency(event.target.value);
-   // }
 
    const handleCoinSelection = (name) => {
       setSelectedCoin(name);

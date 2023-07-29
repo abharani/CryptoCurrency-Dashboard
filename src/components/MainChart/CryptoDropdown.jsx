@@ -7,7 +7,7 @@ import { BsFillCaretDownFill } from "react-icons/bs";
 const CryptoDropdown = () => {
    // State variables
    const [displayDropdown, setDisplayDropdown] = useState(false);
-   const { market } = useSelector(state => state.cryptoMarket);
+   const { allCoinsList } = useSelector(state => state.global);
    const [selectedCoins, setSelectedCoins] = useState(useSelector(state => state.global.selectedCoinsList));
    const [coins, setCoins] = useState();
    const dispatch = useDispatch();
@@ -38,11 +38,11 @@ const CryptoDropdown = () => {
 
    // Fetch list of coins from the market
    useEffect(() => {
-      setCoins(market.map((coin) => ({
+      setCoins(allCoinsList.map((coin) => ({
          id: coin.id,
          name: coin.name,
       })));
-   }, [market]);
+   }, [allCoinsList]);
 
    return (
       <div className='relative inline-block text-left'>

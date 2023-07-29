@@ -1,10 +1,12 @@
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useGetPieChartDataQuery } from "../../store/api";
 import { pieChartData } from "../../utils/chartData";
 import { useSelector } from "react-redux";
+
 ChartJS.register(ArcElement, Tooltip, Legend);
+
 // Options for the chart
 const options = {
    responsive: false,
@@ -25,12 +27,12 @@ export default function PieChart() {
    const { currency } = useSelector((state) => state.global)
 
    // Fetch pie chart data from API
-   const { data: response, isLoading, isSuccess, error, isError } = useGetPieChartDataQuery(`/coins/markets?vs_currency=${currency}&ids=ethereum%2Cbitcoin%2Cbinancecoin%2Ctether%2C&order=market_cap_desc`);
+   const { data: response, isLoading, isSuccess } = useGetPieChartDataQuery(`/coins/markets?vs_currency=${currency}&ids=ethereum%2Cbitcoin%2Cbinancecoin%2Ctether%2C&order=market_cap_desc`);
    const [totalValue, setTotalValue] = useState("");
    const [data, setData] = useState();
 
-      // Format and set data on successful response
-      useEffect(() => {
+   // Format and set data on successful response
+   useEffect(() => {
       if (isSuccess && response) {
          const fetchData = async () => {
             const { formatedData, totalValue } = await pieChartData(response);
@@ -40,7 +42,8 @@ export default function PieChart() {
          fetchData();
       }
    }, [isSuccess, response]);
- // Show loading state while fetching data
+
+   // Show loading state while fetching data
    if (isLoading) {
       return (
          <div className='shadow-md bg-white rounded-md w-full mb-4'>

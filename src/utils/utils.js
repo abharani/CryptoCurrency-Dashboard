@@ -19,7 +19,6 @@ export const multipleCoinsHistory = async (selectedCoins, days) => {
 
          try {
             const res = await axios(url);
-            // console.log(res.data.prices);
             return res.data.prices;
          } catch (error) {
             return null;

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { BsFillCaretDownFill } from 'react-icons/bs';
 
@@ -85,7 +84,6 @@ const SelectChartType = ({ updateChartToRender }) => {
                </div>
             </div>
          }
-
       </div>
    )
 }
