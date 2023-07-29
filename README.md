@@ -14,34 +14,11 @@ Install Cryptocurrency Dashboard with npm
 
 
 ```bash
-   npm install i
+   npm install 
    npm run dev
  
 ```
     
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/abharani/CryptoDashboard.git
-```
-
-Go to the project directory
-
-Install dependencies
-
-```bash
-  npm install 
-```
-
-Start the server
-
-```bash
-  npm run dev
-```
-
-
 ## Features
 
 - Tailwind Design.
@@ -57,17 +34,12 @@ Start the server
 
 ## API Reference
 
-#### Get all items
-
-```http
-  GET https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en
+```https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en
 
 ```
-```http
-  GET https://api.coingecko.com/api/v3/exchange_rates
+```https://api.coingecko.com/api/v3/exchange_rates
 ```
-```http
-  GET https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=${currency}&days=${days}&interval=${interval}
+```https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=${currency}&days=${days}&interval=${interval}
 ```
 
 
