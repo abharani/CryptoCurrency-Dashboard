@@ -11,6 +11,7 @@ Insert gif or link to demo
 Install Cryptocurrency Dashboard with npm
 
 bash
+
 npm install
 
 npm run dev
