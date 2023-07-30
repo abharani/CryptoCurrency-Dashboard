@@ -77,7 +77,7 @@ const Exchange = () => {
                <DropdownUp coins={coins} handleSelect={handleBuyCurrency} type="buy" />
             </div>
             {/* Display the result of the exchange */}
-            <p className="text-[#4c9d8a] text-lg font-semibold px-4 w-full">
+            <p className="text-[#4c9d8a] text-lg font-semibold pl-4 w-full">
                {result && result + ` ${buy.coinId.toUpperCase()}`}
             </p>
          </div>
