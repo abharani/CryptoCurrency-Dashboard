@@ -4,7 +4,7 @@ This is a web application that provides a comprehensive dashboard for tracking a
 
 ## Demo
 
-Insert gif or link to demo
+https://cryptocurrency-dashboard-sigma.vercel.app/
 
 ## Installation
 
