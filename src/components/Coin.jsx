@@ -20,13 +20,13 @@ const Coin = ({ coin, currency }) => {
             </div>
          </div>
          {/* Display the price change percentage */}
-         <span className={`flex pl-12 pr-4 items-center gap-2 ${coin.price_change_percentage_24h < 0
+         <div className={`flex w-20 justify-between items-center gap-2 ${coin.price_change_percentage_24h < 0
             ? "text-orange-500" : "text-green-600"}`}>
             {/* Display an arrow icon based on the price change */}
             {coin.price_change_percentage_24h < 0 ? (<BiDownArrow />) : (<BiUpArrow />)}
             {/* Format and display the percentage */}
             {percentageFormat(coin.price_change_percentage_24h)}
-         </span>
+         </div>
       </div>
    );
 };

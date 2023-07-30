@@ -9,7 +9,7 @@ import Exchange from "./components/Exchange"
 function App() {
    return (
       <div className='flex flex-col gap-5 w-full h-screen'>
-         <div className="w-full shadow-lg h-[6vh] px-3">
+         <div className="w-full shadow-lg h-[6vh] p-3">
             <Header />
          </div>
          <div className="lg:h-[830px] xl:h-[930px] bg-[#f3f8ff] flex flex-col lg:flex-row justify-between gap-5 w-[96%] max-w-[1440px] mx-auto p-5 rounded-lg">
@@ -27,7 +27,7 @@ function App() {
                <div className="flex flex-col md:flex-row gap-4">
                   <div className="bg-white border border-gray-300 rounded-lg w-full">
                      {/* The pie chart component */}
-                      <PieChart />
+                     <PieChart />
                   </div>
                   <div className="bg-white border border-gray-300 rounded-lg w-full">
                      {/* The exchange component */}

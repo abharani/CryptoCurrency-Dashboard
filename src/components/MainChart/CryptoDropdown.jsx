@@ -66,19 +66,14 @@ const CryptoDropdown = () => {
                <div className='flex-col gap-2 shadow-xl h-80 overflow-y-scroll mt-2'>
                   {coins.map((coin) => (
                      <div
+                        onClick={() => handleCoinSelection(coin.id)}
                         key={coin.id}
                         className={`w-full text-center py-1 border-b border-gray-300 
                         hover:bg-rose-200 cursor-pointer
                         ${coin.checked ? 'bg-rose-400' : 'bg-white'}
                         `}
                      >
-                        <input
-                           className="appearance-none h-full"
-                           onChange={() => handleCoinSelection(coin.id)}
-                           checked={coins.checked}
-                           id={coin.id}
-                           type="checkbox" />
-                        <label className="w-full cursor-pointer pl-2" htmlFor={coin.id}>{coin.name}</label>
+                        {coin.name}
                      </div>
                   ))}
                </div>
