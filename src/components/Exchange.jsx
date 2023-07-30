@@ -78,7 +78,7 @@ const Exchange = () => {
             </div>
             {/* Display the result of the exchange */}
             <p className="text-[#4c9d8a] text-lg font-semibold px-4 w-full">
-               {result && result + ` ${buy.coinId}`}
+               {result && result + ` ${buy.coinId.toUpperCase()}`}
             </p>
          </div>
          {/* Button to initiate the exchange */}
