@@ -9,7 +9,7 @@ import Exchange from "./components/Exchange"
 function App() {
    return (
       <div className='flex flex-col gap-5 w-full h-screen'>
-         <div className="w-full shadow-lg h-[6vh] p-3">
+         <div className="w-full shadow-lg px-6 py-3">
             <Header />
          </div>
          <div className="lg:h-[830px] xl:h-[930px] bg-[#f3f8ff] flex flex-col lg:flex-row justify-between gap-5 w-[96%] max-w-[1440px] mx-auto p-5 rounded-lg">
