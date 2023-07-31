@@ -36,7 +36,7 @@ const options = {
       elements: {
       point: {
          radius: 0,
-       
+         maxPoints: 10,       
       }
    }
 }
