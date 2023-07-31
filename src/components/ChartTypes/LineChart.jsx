@@ -32,6 +32,12 @@ const options = {
             pointStyleWidth: 18,
          }
       }
+   },
+      elements: {
+      point: {
+         radius: 0,
+       
+      }
    }
 }
 
