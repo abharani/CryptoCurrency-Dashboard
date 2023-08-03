@@ -34,11 +34,11 @@ const MainChart = () => {
    // Fetch the crypto history data based on selected parameters
    useEffect(() => {
       try {
-         dispatch(getCryptoHistory({ selectedCoinsList, currency, days, interval }));
+         dispatch(getCryptoHistory({ selectedCoinsList, currency, days }));
       } catch (error) {
          console.error('Error:', error);
       }
-   }, [days, interval, dispatch, selectedCoinsList, currency]);
+   }, [days, dispatch, selectedCoinsList, currency]);
 
    return (
       <div className='h-full flex flex-col justify-center'>
