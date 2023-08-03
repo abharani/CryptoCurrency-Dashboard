@@ -10,7 +10,7 @@ const Duration = ({ updateDaysAndInterval }) => {
          {/* Button for 1 day duration */}
          <button
             value={1}
-            onClick={() => handleClick(1, 'hourly')}
+            onClick={() => handleClick(1, 'daily')}
             className="text-xs md:text-base rounded-lg text-black bg-gray-100 px-4 py-2 focus:font-medium focus:bg-blue-100 focus:ring-2 focus:ring-blue-600 "
          >
             1D
@@ -32,14 +32,14 @@ const Duration = ({ updateDaysAndInterval }) => {
          {/* Button for 6 month duration */}
          <button
             value={180}
-            onClick={() => handleClick(180, 'monthly')}
+            onClick={() => handleClick(180, 'daily')}
             className="text-xs md:text-base rounded-lg text-black bg-gray-100 px-4 py-2 focus:font-medium focus:bg-blue-100 focus:ring-2 focus:ring-blue-600">
             6M
          </button>
          {/* Button for 1 year duration */}
          <button
             value={365}
-            onClick={() => handleClick(365, 'monthly')}
+            onClick={() => handleClick(365, 'daily')}
             className="text-xs md:text-base rounded-lg text-black bg-gray-100 px-4 py-2 focus:font-medium focus:bg-blue-100 focus:ring-2 focus:ring-blue-600">
             1Y
          </button>
