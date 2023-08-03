@@ -34,10 +34,10 @@ export default coinHistorySlice.reducer; // Export the reducer
 
 export const getCryptoHistory = createAsyncThunk(
    'cryptoHistory/get',
-   async ({ selectedCoinsList, currency, days, interval }) => {
+   async ({ selectedCoinsList, currency, days }) => {
       const apiData = await Promise.all(
          selectedCoinsList.map(async (coin) => {
-            const url = `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=${currency}&days=${days}&interval=${interval}`;
+            const url = `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=${currency}&days=${days}`;
             try {
                const res = await axios(url); // Fetch coin history data for each selected coin
                return res.data.prices; // Extract the prices from the response data
