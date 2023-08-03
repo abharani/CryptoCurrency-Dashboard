@@ -10,7 +10,7 @@ const Duration = ({ updateDaysAndInterval }) => {
          {/* Button for 1 day duration */}
          <button
             value={1}
-            onClick={() => handleClick(1, 'daily')}
+            onClick={() => handleClick(1, 'hourly')}
             className="text-xs md:text-base rounded-lg text-black bg-gray-100 px-4 py-2 focus:font-medium focus:bg-blue-100 focus:ring-2 focus:ring-blue-600 "
          >
             1D
