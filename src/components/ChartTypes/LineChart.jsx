@@ -33,7 +33,13 @@ const options = {
          }
       }
    },
-      
+          elements: {
+      point: {
+         radius: 0,
+         maxPoints: 10,
+      }
+   }
+
 }
 
 
@@ -44,15 +50,11 @@ const LineChart = ({ res }) => {
       const fetchData = () => {
          setTimeout(() => {
             setLoading(false);
-         }, 2000); // Replace 2000 with your actual data fetching code
+         }, 2000); 
       };
-
       fetchData();
-
    }, []);
-
    if (!res && !loading) return null;
-
    return (
       <>
          {/* Show the circular loader while loading is true */}
@@ -63,7 +65,7 @@ const LineChart = ({ res }) => {
          )}
 
          {/* Render the line chart with the data once it is loaded */}
-         {!loading && <Line className='' data={res} options={options} />}
+         {!loading && <Line  data={res} options={options} />}
       </>
    );
 };
